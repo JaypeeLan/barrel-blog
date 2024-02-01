@@ -82,7 +82,7 @@ const SingleArticle = ({ params }) => {
 
   if (errorMsg) {
     return (
-      <Box className="min-h-[70px] flex items-center justify-center">
+      <Box className="min-h-[70px] flex items-center justify-center -mt-[100vh]">
         <Text className="text-[32px] font-semibold leading-[38px] tracking-[-0.21px]">
           Oops! Something went wrong. Please try again later.
         </Text>
