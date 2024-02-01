@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Myfont;
+  font-style: thin;
+  src: url("../public/fonts/InterDisplay-Thin.otf");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: Myfont;
+  font-style: light;
+  src: url("../public/fonts/InterDisplay-Light.otf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Myfont;
+  font-style: medium;
+  src: url("../public/fonts/InterDisplay-Medium.otf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Myfont;
+  font-style: semibold;
+  src: local(""), url("../public/fonts/InterDisplay-SemiBold.otf") format("otf");
+  font-weight: 600;
+}
+.--heading {
+  font-family: "Interdisplay", system-ui, Arial, sans-serif !important;
+  letter-spacing: 0.2px;
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  font-family: "Myfont", "InterDisplay", sans-serif !important;
+  background-color: lightblue !important;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background: #f9f9fb;
+  border: 1px #d0d5dd solid;
+  color: #98a2b3;
+  opacity: 1 !important;
+}
+
+input:focus:not([role="combobox"]),
+input:focus-visible:not([role="combobox"]),
+select:focus,
+select:focus-visible,
+textarea:focus,
+textarea:focus-visible {
+  box-shadow: 0px 0px 0px 2px rgba(95, 1, 210, 0.1) !important;
+}
+
+.sel > div:hover {
+  border-color: #5f01d2;
+  box-shadow: 0px 0px 0px 2px rgba(95, 1, 210, 0.1);
+}
+
+.accept > img,
+.accept {
+  border-radius: 17px !important;
+  height: 80px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.update > span.chakra-checkbox__control[data-checked] {
+  background: black !important;
+  border-color: black !important;
+  border-radius: 2px !important;
+}
+
+/* .scroll-container:hover .scrolling {
+  animation-play-state: paused;
+} */
+
+.scroll-container[data-animated="true"] {
+  overflow: hidden;
+  -webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+.scroll-container[data-animated="true"] .scrolling {
+  flex-wrap: nowrap;
+}
+
+.scrolling {
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: 15s scroll infinite linear;
+}
+
+@keyframes scroll {
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+img {
+  max-width: 100% !important;
+}
+
+.footer {
+  position: relative;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.0156) 0%,
+    rgba(255, 255, 255, 0.195) 25.29%,
+    rgba(255, 255, 255, 0.2067) 79.96%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
