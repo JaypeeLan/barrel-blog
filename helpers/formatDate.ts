@@ -1,22 +1,36 @@
-function formatDateToDDMMYYYY(dateString) {
-  // Ensure dateString is a valid string before splitting
+function formatDateToMonthDDYYYY(dateString) {
+  // Ensure dateString is a valid string before creating a Date object
   if (typeof dateString !== "string") {
-    throw new Error(
-      "Invalid input: Please provide a valid date string in YYYY-MM-DD format."
-    );
+    return "";
   }
 
-  const dateParts = dateString.split("-");
+  const date = new Date(dateString);
 
-  // Validate the length of the dateParts array to ensure it's in YYYY-MM-DD format
-  if (dateParts.length !== 3) {
-    throw new Error("Invalid date format: Expected YYYY-MM-DD format.");
-  }
+  // Array of month names
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-  // Rearrange the parts to DD-MM-YYYY format
-  const formattedDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
+  // Get the day, month, and year from the date
+  const day = date.getDate();
+  const month = monthNames[date.getMonth()];
+  const year = date.getFullYear();
+
+  // Format the date in "MonthName dd, year" format
+  const formattedDate = `${month} ${day}, ${year}`;
 
   return formattedDate;
 }
 
-export default formatDateToDDMMYYYY;
+export default formatDateToMonthDDYYYY;

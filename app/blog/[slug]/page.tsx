@@ -7,6 +7,7 @@
 import { Box, Center, Spinner, Text } from "@chakra-ui/react";
 import { PortableText } from "@portabletext/react";
 import Loader from "components/Loader";
+import formatDateToMonthDDYYYY from "helpers/formatDate";
 import formatDateToDDMMYYYY from "helpers/formatDate";
 import { client } from "lib/sanity";
 import { urlFor } from "lib/sanityImgUrl";
@@ -149,7 +150,8 @@ const SingleArticle = ({ params }) => {
 
   return (
     <>
-      <Box className="text-white mt-[21px] mb-[197px] min-h-screen w-full flex px-[10%] max-w-[82%] relative mx-auto">
+      <Box className="text-white mt-[21px] mb-[197px] min-h-screen w-full flex items-center justify-center px-[10%] relative mx-auto">
+        {/* center this div */}
         <div>
           <Box className="flex flex-col gap-[20px] mb-8">
             <h1 className="text-[46px] font-semibold text-white">
@@ -157,7 +159,7 @@ const SingleArticle = ({ params }) => {
             </h1>
             <p>
               Last updated on{" "}
-              {formatDateToDDMMYYYY(
+              {formatDateToMonthDDYYYY(
                 new Date(data?.lastUpdated).toISOString().split("T")[0]
               )}
             </p>
@@ -172,12 +174,15 @@ const SingleArticle = ({ params }) => {
                 />
               </div>
               {/* <Avatar src={data?.author?.image?.asset.url} /> */}
-              <span>Written by {data?.author.name}</span>
+              <p className="font-normal">
+                Written by{" "}
+                <span className="font-medium"> {data?.author.name}</span>
+              </p>
             </div>
           </Box>
 
           <>
-            <div className="bg-[#312C46] rounded-[20px] h-[393px] w-[792px] overflow-hidden">
+            <div className="bg-[#312C46] rounded-[20px] h-[393px] w-[738px] overflow-hidden">
               <img
                 alt="author"
                 src={data?.image?.asset.url}
@@ -186,7 +191,7 @@ const SingleArticle = ({ params }) => {
               />{" "}
             </div>
           </>
-          <div>
+          <div className="max-w-[738px]">
             <PortableText
               value={data?.content}
               components={PortableTextComponentView}

@@ -6,7 +6,7 @@ const ArticleCard = ({ title, desc, slug, imgSrc, authorName, authorImg }) => {
   return (
     <Box>
       <Link href={`/blog/${slug}`}>
-        <div className="bg-transparent rounded-[20px] mb-[32px] w-full h-[185px] overflow-hidden">
+        <div className="bg-transparent rounded-[20px] mb-[32px] w-full h-[282px] overflow-hidden">
           <img src={imgSrc} alt={slug} width={"100%"} height={"100%"} />
         </div>
         <p className="text-[32px] font-semibold leading-[38px] tracking-[-0.21px] mb-[6px]">
@@ -19,9 +19,9 @@ const ArticleCard = ({ title, desc, slug, imgSrc, authorName, authorImg }) => {
           <div className="w-12 h-12 rounded-[10px] overflow-hidden bg-red-400 ">
             <img src={authorImg} alt="author" width={"100%"} height={"100%"} />
           </div>
-          <span className="text-[16px] leading-[28px] tracking-[-0.2px] font-medium">
-            Written by {authorName}
-          </span>
+          <p className="text-[16px] leading-[28px] tracking-[-0.2px] font-normal ">
+            Written by <span className="font-medium"> {authorName}</span>
+          </p>
         </div>
       </Link>
     </Box>
@@ -49,7 +49,7 @@ export const FeaturedArticleCard = ({
         </div>
 
         <Link href={`/blog/${slug}`}>
-          <div className="flex flex-col gap-[6px] max-w-[280px] mt-8">
+          <div className="flex flex-col gap-[6px] max-w-[514px] mt-8">
             <div className="inline-flex items-center gap-3 mb-2">
               <div className="w-12 h-12 rounded-[10px] overflow-hidden bg-red-400 ">
                 <img
@@ -59,9 +59,9 @@ export const FeaturedArticleCard = ({
                   height={"100%"}
                 />
               </div>
-              <span className="text-[16px] leading-[28px] tracking-[-0.2px] font-medium">
-                Written by {authorName}
-              </span>
+              <p className="text-[16px] leading-[28px] tracking-[-0.2px] font-normal">
+                Written by <span className="font-medium"> {authorName} </span>
+              </p>
             </div>
             <h1 className="text-[32px] font-semibold leading-[38px] tracking-[-0.21px]">
               {title}{" "}
