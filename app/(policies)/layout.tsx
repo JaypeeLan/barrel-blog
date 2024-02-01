@@ -1,8 +1,8 @@
 "use client";
 
-import { CustomButton } from "@/components/Button/index";
-import { Footer } from "@/container/Footer/Footer";
 import { Box, Flex, Text } from "@chakra-ui/react";
+import { CustomButton } from "components/Button";
+import { Footer } from "container/Footer/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
