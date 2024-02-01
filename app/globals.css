@@ -146,3 +146,24 @@ img {
     rgba(255, 255, 255, 0) 100%
   );
 }
+
+ol,
+ul,
+menu {
+  list-style: initial;
+  padding: initial;
+  margin-left: 1.5rem;
+}
+
+p,
+span,
+li,
+blockquote {
+  letter-spacing: -0.2px;
+  line-height: 30px;
+}
+
+blockquote {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

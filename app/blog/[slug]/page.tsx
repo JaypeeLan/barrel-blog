@@ -90,7 +90,7 @@ const SingleArticle = ({ params }) => {
     );
   }
 
-  // console.log(data);
+  console.log(data);
 
   const PortableTextComponentView = {
     types: {
@@ -123,6 +123,31 @@ const SingleArticle = ({ params }) => {
                 {textContent}
               </p>
             );
+          case "blockquote":
+            // Split the textContent into quote and author based on the long hyphen
+            const [quote, author] = textContent
+              .split("—")
+              .map((part) => part.trim());
+
+            return (
+              <blockquote
+                key={value.value._key}
+                className="leading-[30px] text-white pl-4 relative"
+              >
+                <p>{quote}</p>
+                <footer>— {author}</footer>
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    borderLeft: "2px solid #fff",
+                  }}
+                ></div>
+              </blockquote>
+            );
+
           default:
             return null;
         }
@@ -130,7 +155,7 @@ const SingleArticle = ({ params }) => {
       image: (value) => {
         return (
           <div
-            className="w-[738px] h-[388px] rounded-lg overflow-hidden py-12"
+            className="w-[738px] h-[388px] rounded-lg overflow-hidden my-12"
             key={value.value._key}
           >
             <Image
@@ -141,6 +166,15 @@ const SingleArticle = ({ params }) => {
               height={200}
             />
           </div>
+        );
+      },
+      bullet: (value) => {
+        return (
+          <ul key={value.value._key}>
+            {value.value.children.map((child) => (
+              <li key={child._key}>{child.text}</li>
+            ))}
+          </ul>
         );
       },
 
