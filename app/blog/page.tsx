@@ -120,9 +120,9 @@ const Blog = () => {
 
   if (loading) return <Loader />;
   return (
-    <Box flex={1} className="text-white mx-[174px]">
+    <Box flex={1} className="text-white mx-[174px] max-w-[1085px]">
       {featuredArticle && (
-        <div className="flex justify-center w-full">
+        <>
           <FeaturedArticleCard
             title={featuredArticle?.title}
             text={featuredArticle?.overview}
@@ -130,12 +130,12 @@ const Blog = () => {
             authors={featuredArticle.authors}
             slug={featuredArticle?.slug?.current}
           />
-        </div>
+        </>
       )}
 
       {/* articles */}
       <Box className="w-full  flex items-center justify-center mt-[30px] mb-[241px]">
-        <div className="w-full max-w-[1338px]">
+        <div className="w-full max-w-[1085px]">
           <>
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[32px] text-white">
               {data &&

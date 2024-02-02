@@ -35,7 +35,7 @@ const ArticleCard = ({
   return (
     <Box>
       <Link href={`/blog/${slug}`}>
-        <div className="bg-transparent rounded-[20px] mb-[32px] w-full h-[282px] overflow-hidden cursor-pointer border-[0.5px] border-[#3F3F48]  img-container">
+        <div className="bg-transparent rounded-[12px] mb-[32px] w-full h-[282px] overflow-hidden cursor-pointer border-[0.5px] border-[#3F3F48]  img-container">
           <img src={imgSrc} alt={slug} width={"100%"} height={"100%"} />
         </div>
 
@@ -73,12 +73,12 @@ export default ArticleCard;
 
 export const FeaturedArticleCard = ({ title, text, imgSrc, authors, slug }) => {
   return (
-    <Box>
+    <Box className="w-full">
       <h1 className="text-[32px] font-semibold leading-[38px] tracking-[-1px]">
         The latest news from Barrel
       </h1>{" "}
       <div className="inline-flex mt-[53px] gap-8">
-        <div className="bg-[#312C46] rounded-[20px] w-[526px] h-[393px] overflow-hidden cursor-pointer border-[0.5px] border-[#3F3f48] img-container">
+        <div className="bg-[#312C46] rounded-[12px] w-[526px] h-[393px] overflow-hidden cursor-pointer border-[0.5px] border-[#3F3f48] img-container">
           <Link href={`/blog/${slug}`}>
             <img src={imgSrc} alt="" width={"100%"} height={"100%"} />
           </Link>
@@ -86,7 +86,7 @@ export const FeaturedArticleCard = ({ title, text, imgSrc, authors, slug }) => {
 
         <Link href={`/blog/${slug}`}>
           <div className="flex flex-col gap-[6px] max-w-[514px] mt-8">
-            <Box className="w-full inline-flex mb-2">
+            <Box className="w-full inline-flex mb-3">
               {(authors as Author[]).map((author) => (
                 <div
                   className="inline-flex items-center gap-[6px] mt-[14px] mr-4"

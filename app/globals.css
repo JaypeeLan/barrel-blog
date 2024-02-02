@@ -167,8 +167,9 @@ blockquote {
 li {
   background: linear-gradient(
     to bottom,
-    rgba(244, 243, 242, 1),
-    rgba(244, 243, 242, 0.4)
+    rgba(255, 255, 255, 1),
+    /* #FFFFFF at 100% opacity */ rgba(255, 255, 255, 0.7)
+      /* #FFFFFF at 70% opacity */
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

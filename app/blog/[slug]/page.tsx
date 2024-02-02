@@ -176,7 +176,7 @@ const SingleArticle = ({ params }) => {
 
   return (
     <>
-      <Box className="text-white mt-[21px] mb-[197px] min-h-screen w-full flex items-center justify-center px-[10%] relative mx-auto">
+      <Box className="text-white mb-[197px] min-h-screen w-full flex items-center justify-center px-[10%] relative mx-auto">
         {/* center this div */}
         <div>
           <Box className="flex flex-col gap-[8px] mb-8">
