@@ -16,10 +16,10 @@ export default {
     },
     {name: 'image', type: 'image', title: 'Image'},
     {
-      name: 'author',
-      type: 'reference',
-      title: 'Author',
-      to: [{type: 'author'}],
+      name: 'authors',
+      type: 'array',
+      title: 'Authors',
+      of: [{type: 'reference', to: [{type: 'author'}]}],
     },
     {
       name: 'category',

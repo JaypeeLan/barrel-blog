@@ -4,14 +4,15 @@
 /* eslint-disable @next/next/no-async-client-component */
 /* eslint-disable react/no-unescaped-entities */
 
-import { Box, Center, Spinner, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { PortableText } from "@portabletext/react";
 import Loader from "components/Loader";
+import VerticalLine from "components/Pipe";
 import formatDateToMonthDDYYYY from "helpers/formatDate";
-import formatDateToDDMMYYYY from "helpers/formatDate";
 import { client } from "lib/sanity";
 import { urlFor } from "lib/sanityImgUrl";
 import Image from "next/image";
+import Link from "next/link";
 import { useLayoutEffect, useState } from "react";
 
 const SingleArticle = ({ params }) => {
@@ -33,7 +34,7 @@ const SingleArticle = ({ params }) => {
             url
           }
         },
-        author-> {
+        authors[]-> {
           name,
           slug,
           image {
@@ -50,20 +51,9 @@ const SingleArticle = ({ params }) => {
 
       try {
         const fetchedData = await client.fetch(query);
-        setData(fetchedData);
-        let tempHeadings = [];
+        console.log(fetchedData);
 
-        fetchedData.content.forEach((block) => {
-          if (
-            block._type === "block" &&
-            (block.style === "h1" || block.style === "h2")
-          ) {
-            const textContent = block.children
-              .map((child) => child.text)
-              .join("");
-            tempHeadings.push(textContent);
-          }
-        });
+        setData(fetchedData);
       } catch (error) {
         setErrorMsg(
           "There was an error fetching your article: " + error.message
@@ -90,7 +80,7 @@ const SingleArticle = ({ params }) => {
     );
   }
 
-  console.log(data);
+  // console.log(data);
 
   const PortableTextComponentView = {
     types: {
@@ -102,7 +92,7 @@ const SingleArticle = ({ params }) => {
           case "h1":
             return (
               <h1
-                className="font-medium text-white text-[24px] mb-3 mt-12"
+                className="font-medium add-gradient text-[24px] mb-3 mt-12"
                 key={value.value._key}
               >
                 {textContent}
@@ -111,7 +101,7 @@ const SingleArticle = ({ params }) => {
           case "h2":
             return (
               <h2
-                className="font-medium text-white text-[20px] mb-3 mt-12"
+                className="font-medium add-gradient text-[20px] mb-3 mt-12"
                 key={value.value._key}
               >
                 {textContent}
@@ -119,10 +109,21 @@ const SingleArticle = ({ params }) => {
             );
           case "normal":
             return (
-              <p key={value.value._key} className="leading-[30px] text-white">
+              <p key={value.value._key} className="leading-[30px] add-gradient">
                 {textContent}
               </p>
             );
+          case "bullet":
+            return (
+              <ul key={value.value._key} className="add-gradient">
+                {value.value.children.map((child) => (
+                  <li className="add-gradient" key={child._key}>
+                    {child.text}
+                  </li>
+                ))}
+              </ul>
+            );
+
           case "blockquote":
             // Split the textContent into quote and author based on the long hyphen
             const [quote, author] = textContent
@@ -132,10 +133,10 @@ const SingleArticle = ({ params }) => {
             return (
               <blockquote
                 key={value.value._key}
-                className="leading-[30px] text-white pl-4 relative"
+                className="leading-[30px] pl-4 relative my-4"
               >
-                <p>{quote}</p>
-                <footer>— {author}</footer>
+                <p className="add-gradient">{quote}</p>
+                <footer className="add-gradient">— {author}</footer>
                 <div
                   style={{
                     position: "absolute",
@@ -168,15 +169,6 @@ const SingleArticle = ({ params }) => {
           </div>
         );
       },
-      bullet: (value) => {
-        return (
-          <ul key={value.value._key}>
-            {value.value.children.map((child) => (
-              <li key={child._key}>{child.text}</li>
-            ))}
-          </ul>
-        );
-      },
 
       // Handle other types...
     },
@@ -187,36 +179,39 @@ const SingleArticle = ({ params }) => {
       <Box className="text-white mt-[21px] mb-[197px] min-h-screen w-full flex items-center justify-center px-[10%] relative mx-auto">
         {/* center this div */}
         <div>
-          <Box className="flex flex-col gap-[20px] mb-8">
-            <h1 className="text-[46px] font-semibold text-white">
+          <Box className="flex flex-col gap-[8px] mb-8">
+            <div className="leading-7 tracking-[0.2px]">
+              <Link href={"/blog"}>
+                <span className="add-gradient"> Blog /</span>{" "}
+              </Link>
+              <span className="text-[#6439F5]">News</span>
+            </div>
+
+            <h1 className="text-[46px] font-semibold add-gradient leading-[52px] tracking-[0.2px] ">
               {data?.title}
             </h1>
-            <p>
-              Last updated on{" "}
-              {formatDateToMonthDDYYYY(
-                new Date(data?.lastUpdated).toISOString().split("T")[0]
-              )}
-            </p>
 
-            <div className="inline-flex items-center gap-3">
-              <div>
-                <img
-                  alt="author"
-                  src={data?.author?.image?.asset.url}
-                  width={"100%"}
-                  className=" w-[50px] h-[50px] rounded-[10px]"
-                />
+            <Box className="inline-flex gap-3 items-center mt-1">
+              <div className="inline-flex gap-1">
+                {data?.authors.map((author, index, array) => (
+                  <p className="font-normal add-gradient leading-7 tracking-[0.2px]">
+                    {`${author?.name}${index !== array.length - 1 ? ", " : ""}`}
+                  </p>
+                ))}
               </div>
-              {/* <Avatar src={data?.author?.image?.asset.url} /> */}
-              <p className="font-normal">
-                Written by{" "}
-                <span className="font-medium"> {data?.author.name}</span>
+
+              <VerticalLine width="1px" height={5} />
+
+              <p className="add-gradient">
+                {formatDateToMonthDDYYYY(
+                  new Date(data?.lastUpdated).toISOString().split("T")[0]
+                )}
               </p>
-            </div>
+            </Box>
           </Box>
 
           <>
-            <div className="bg-[#312C46] rounded-[20px] h-[393px] w-[738px] overflow-hidden">
+            <div className="bg-[#312C46] rounded-[20px] h-[393px] w-[720px] overflow-hidden">
               <img
                 alt="author"
                 src={data?.image?.asset.url}
@@ -225,7 +220,7 @@ const SingleArticle = ({ params }) => {
               />{" "}
             </div>
           </>
-          <div className="max-w-[738px]">
+          <div className="max-w-[720px]">
             <PortableText
               value={data?.content}
               components={PortableTextComponentView}

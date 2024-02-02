@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Center, Spinner, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import ArticleCard, { FeaturedArticleCard } from "components/Card";
 import Loader from "components/Loader";
 import { client } from "lib/sanity";
@@ -30,7 +30,7 @@ const Blog = () => {
             url
           }
         },
-        author-> {
+        authors[]-> {
           name,
           slug,
           image {
@@ -73,7 +73,7 @@ const Blog = () => {
             url
           }
         },
-        author-> {
+        authors[]-> {
           name,
           slug,
           image {
@@ -127,29 +127,28 @@ const Blog = () => {
             title={featuredArticle?.title}
             text={featuredArticle?.overview}
             imgSrc={featuredArticle?.image?.asset?.url}
-            authorName={featuredArticle?.author?.name}
-            authorImg={featuredArticle?.author?.image?.asset.url}
+            authors={featuredArticle.authors}
             slug={featuredArticle?.slug?.current}
           />
         </div>
       )}
 
       {/* articles */}
-      <Box className="w-full  flex items-center justify-center mt-[81px] mb-[241px]">
+      <Box className="w-full  flex items-center justify-center mt-[30px] mb-[241px]">
         <div className="w-full max-w-[1338px]">
           <>
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[32px] text-white">
               {data &&
                 data.map((Articles) => (
                   <>
+                    {/* {console.log("cat", Articles)} */}
                     <ArticleCard
                       key={Articles._id}
                       title={Articles?.title}
-                      desc={Articles?.overview}
                       slug={Articles?.slug?.current}
                       imgSrc={Articles?.image?.asset?.url}
-                      authorName={Articles?.author?.name}
-                      authorImg={Articles?.author?.image?.asset.url}
+                      authors={Articles.authors}
+                      category={Articles.category}
                     />
                   </>
                 ))}

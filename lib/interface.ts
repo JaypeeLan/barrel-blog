@@ -1,3 +1,18 @@
+interface Author {
+  name: string;
+  slug: {
+    current: string;
+    _type: string;
+  };
+  image: {
+    asset: {
+      _id: string;
+      url: string;
+    };
+  };
+  bio: string;
+}
+
 interface Post {
   _id: string;
   _type: string;
@@ -9,7 +24,7 @@ interface Post {
   featured: boolean;
   publishedAt: string;
   lastUpdated: string;
-  author: any;
+  authors: Author[];
   category: string;
   image: any;
   slug: {
