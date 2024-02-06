@@ -120,7 +120,7 @@ const Blog = () => {
 
   if (loading) return <Loader />;
   return (
-    <Box flex={1} className="text-white mx-[174px] max-w-[1085px]">
+    <Box flex={1} className="text-white mx-[174px] max-w-[1085px]  mt-[200px]">
       {featuredArticle && (
         <>
           <FeaturedArticleCard
@@ -134,7 +134,7 @@ const Blog = () => {
       )}
 
       {/* articles */}
-      <Box className="w-full  flex items-center justify-center mt-[30px] mb-[241px]">
+      <Box className="w-full  flex items-center justify-center mb-[241px]">
         <div className="w-full max-w-[1085px]">
           <>
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[32px] text-white">

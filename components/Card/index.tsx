@@ -35,8 +35,14 @@ const ArticleCard = ({
   return (
     <Box>
       <Link href={`/blog/${slug}`}>
-        <div className="bg-transparent rounded-[12px] mb-[32px] w-full h-[282px] overflow-hidden cursor-pointer border-[0.5px] border-[#3F3F48]  img-container">
-          <img src={imgSrc} alt={slug} width={"100%"} height={"100%"} />
+        <div className="bg-transparent rounded-[12px] mb-[32px] w-full max-h-[282px]  cursor-pointer border-[0.5px]   img-container">
+          <img
+            src={imgSrc}
+            alt={slug}
+            width={"100%"}
+            height={"282px"}
+            className="img-drop-effect rounded-[12px]"
+          />
         </div>
 
         <Box className="text-[20px] font-semibold tracking-[-0.21px] capitalize">
@@ -73,14 +79,22 @@ export default ArticleCard;
 
 export const FeaturedArticleCard = ({ title, text, imgSrc, authors, slug }) => {
   return (
-    <Box className="w-full">
+    <Box className="w-full mb-[32px]">
       <h1 className="text-[32px] font-semibold leading-[38px] tracking-[-1px]">
         The latest news from Barrel
       </h1>{" "}
       <div className="inline-flex mt-[53px] gap-8">
-        <div className="bg-[#312C46] rounded-[12px] w-[526px] h-[393px] overflow-hidden cursor-pointer border-[0.5px] border-[#3F3f48] img-container">
+        <div className=" rounded-[12px] w-[526px] h-auto  cursor-pointer border-[0.5px]  img-container">
           <Link href={`/blog/${slug}`}>
-            <img src={imgSrc} alt="" width={"100%"} height={"100%"} />
+            {/* <div className="w-[540px] h-full bg-blue-300 pl-1 "> */}
+            <img
+              src={imgSrc}
+              alt=""
+              width={"100%"}
+              height={"100%"}
+              className="img-drop-effect rounded-[12px]"
+            />
+            {/* </div> */}
           </Link>
         </div>
 

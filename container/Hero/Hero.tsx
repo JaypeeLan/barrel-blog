@@ -25,7 +25,7 @@ export const Hero = () => {
     }
   }, []);
   return (
-    <div className="flex flex-col justify-center align-middle items-center mt-[0px] md:mt-[17px]">
+    <div className="flex flex-col justify-center align-middle items-center mt-[150px] md:mt-[200px]">
       <h1 className="text-center justify-center align-middle flex text-[50px] md:text-7xl  font-medium leading-[55px] md:leading-[97.76px] text-white tracking-[-2px] md:tracking-[-3.76px] md:px-0 px-4">
         The fastest way to design and <br /> deploy procurement automation
       </h1>

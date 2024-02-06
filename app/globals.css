@@ -176,6 +176,34 @@ li {
   background-clip: text;
 }
 
-.img-container:hover {
-  box-shadow: 0px 0px 40px rgba(255, 255, 255, 0.5);
+.img-drop-effect {
+  border: 0.5px solid rgba(63, 63, 72, 1);
+  box-shadow: 0 0 0 3px rgba(25, 23, 25, 1), 0 0 0 3.5px #232023;
+  transition: box-shadow 500ms ease;
+
+  &:hover {
+    box-shadow: 0 0 0 3px rgba(25, 23, 25, 1), 0 0 0 3.5px #232023,
+      0 4px 44px rgba(115, 32, 216, 0.2);
+  }
+}
+
+.blur-bg {
+  /* background-color: white; */
+  backdrop-filter: blur(8px);
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.0156) 0%,
+    rgba(255, 255, 255, 0.195) 25.29%,
+    rgba(255, 255, 255, 0.2067) 79.96%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }

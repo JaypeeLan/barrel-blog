@@ -51,7 +51,6 @@ const SingleArticle = ({ params }) => {
 
       try {
         const fetchedData = await client.fetch(query);
-        console.log(fetchedData);
 
         setData(fetchedData);
       } catch (error) {
@@ -169,14 +168,12 @@ const SingleArticle = ({ params }) => {
           </div>
         );
       },
-
-      // Handle other types...
     },
   };
 
   return (
     <>
-      <Box className="text-white mb-[197px] min-h-screen w-full flex items-center justify-center px-[10%] relative mx-auto">
+      <div className="text-white mb-[197px] min-h-screen w-full flex items-center justify-center px-[10%] overflow-x-hidden mx-auto mt-[200px]">
         {/* center this div */}
         <div>
           <Box className="flex flex-col gap-[8px] mb-8">
@@ -227,7 +224,7 @@ const SingleArticle = ({ params }) => {
             />
           </div>
         </div>
-      </Box>
+      </div>
     </>
   );
 };
